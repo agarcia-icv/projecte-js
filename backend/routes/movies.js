@@ -49,7 +49,6 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-
 router.put("/:id", async (req, res) => {
   try {
     const movie = await Movie.findByIdAndUpdate(
@@ -59,7 +58,7 @@ router.put("/:id", async (req, res) => {
     );
 
     if (!movie) {
-      return res.status(404).json({ message: "Movie not found" });
+      return res.status(404).json({ message: "Pelicula no trobada" });
     }
 
     res.json(movie);
