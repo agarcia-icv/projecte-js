@@ -26,10 +26,24 @@ router.get("/:id", async (req, res) => {
     const movie = await Movie.findById(req.params.id);
 
     if (!movie) {
-      return res.status(404).json({ message: "Movie not found" });
+      return res.status(404).json({ message: "Pelicula no trobada" });
     }
 
     res.json(movie);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+router.delete("/:id", async (req, res) => {
+  try {
+    const movie = await Movie.findByIdAndDelete(req.params.id);
+
+    if (!movie) {
+      return res.status(404).json({ message: "Pelicula no trobada" });
+    }
+
+    res.json({ message: "Pelicula eliminada correctament" });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
