@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getMovies } from "../services/movieService";
 import MovieCard from "../components/MovieCard";
 import type { Movie } from "../types/Movie";
+import MovieForm from "../components/MovieForm";
 
 export default function MoviesPage() {
 
@@ -12,13 +13,15 @@ export default function MoviesPage() {
   }, []);
 
   return (
-    <div>
-      <h1>PELICULES</h1>
+<div>
+  <h1>Pelicules</h1>
 
-      {movies.map((movie, index) => (
-        <MovieCard key={index} movie={movie} />
-      ))}
+  <MovieForm />
 
-    </div>
+  {movies.map((movie, index) => (
+    <MovieCard key={index} movie={movie} />
+  ))}
+</div>
+    
   );
 }
