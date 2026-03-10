@@ -18,6 +18,12 @@ export default function MovieCard({ movie }: Props) {
       <p>
         {movie.watched ? "VISTA" : "NO VISTA"}
       </p>
+      <h3>{movie.title}</h3>
+
+       <p>{movie.rating}</p>
+
+    <button>View Details</button>
     </div>
+    
   );
 }

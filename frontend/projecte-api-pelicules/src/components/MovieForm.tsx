@@ -13,17 +13,17 @@ const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault();
 
   if (!title) {
-    setError("Title is required");
+    setError("has de posar titol");
     return;
   }
 
   if (rating < 0 || rating > 10) {
-    setError("Rating must be between 0 and 10");
+    setError("La puntuacio ha de ser del 0 al 10");
     return;
   }
 
   if (!genres) {
-    setError("At least one genre is required");
+    setError("minim has de posar un genere");
     return;
   }
 
@@ -45,22 +45,22 @@ const handleSubmit = async (e: React.FormEvent) => {
     body: JSON.stringify(movie)
   });
 
-  alert("Movie created!");
+  alert("pelicula creada");
 };
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2>Add Movie</h2>
+      <h2>Afegir pelicula</h2>
 {error && <p style={{color: "red"}}>{error}</p>}
       <input
-        placeholder="Title"
+        placeholder="Titol"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
       />
 
       <input
         type="number"
-        placeholder="Rating"
+        placeholder="Puntuacio"
         value={rating}
         onChange={(e) => setRating(Number(e.target.value))}
       />
@@ -72,13 +72,13 @@ const handleSubmit = async (e: React.FormEvent) => {
       />
 
       <input
-        placeholder="Genres (comma separated)"
+        placeholder="Genre (Separat per comes)"
         value={genres}
         onChange={(e) => setGenres(e.target.value)}
       />
 
       <label>
-        Watched
+        Vista
         <input
           type="checkbox"
           checked={watched}
@@ -86,7 +86,7 @@ const handleSubmit = async (e: React.FormEvent) => {
         />
       </label>
 
-      <button type="submit">Create Movie</button>
+      <button type="submit">Crear pelicula</button>
     </form>
   );
   
