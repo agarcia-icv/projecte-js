@@ -7,33 +7,51 @@ export default function MovieForm() {
   const [watched, setWatched] = useState(false);
   const [releaseDate, setReleaseDate] = useState("");
   const [genres, setGenres] = useState("");
+  const [error, setError] = useState("");
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
 
-    const movie = {
-      title,
-      rating,
-      watched,
-      releaseDate,
-      genres: genres.split(",").map(g => g.trim())
-    };
+  if (!title) {
+    setError("Title is required");
+    return;
+  }
 
-    await fetch("http://localhost:3000/movies", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(movie)
-    });
+  if (rating < 0 || rating > 10) {
+    setError("Rating must be between 0 and 10");
+    return;
+  }
 
-    alert("Movie created!");
+  if (!genres) {
+    setError("At least one genre is required");
+    return;
+  }
+
+  setError("");
+
+  const movie = {
+    title,
+    rating,
+    watched,
+    releaseDate,
+    genres: genres.split(",").map(g => g.trim())
   };
+
+  await fetch("http://localhost:3000/movies", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(movie)
+  });
+
+  alert("Movie created!");
+};
 
   return (
     <form onSubmit={handleSubmit}>
       <h2>Add Movie</h2>
-
+{error && <p style={{color: "red"}}>{error}</p>}
       <input
         placeholder="Title"
         value={title}
@@ -71,4 +89,5 @@ export default function MovieForm() {
       <button type="submit">Create Movie</button>
     </form>
   );
+  
 }
