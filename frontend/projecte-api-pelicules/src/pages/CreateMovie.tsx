@@ -3,16 +3,13 @@ import MovieForm from "../components/MovieForm";
 
 export default function CreateMovie() {
   return (
-    <div>
+    <div className="container d-flex justify-content-center align-items-center vh-100">
 
-      <Link to="/">
-        <button>Tornar al menú principal</button>
-      </Link>
 
-      <h1>Crear pel·lícula</h1>
+        <MovieForm />
 
-      <MovieForm />
+      </div>
 
-    </div>
+
   );
 }

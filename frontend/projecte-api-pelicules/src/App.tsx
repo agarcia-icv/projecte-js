@@ -6,12 +6,14 @@ import CreateMovie from "./pages/CreateMovie";
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<MoviesPage />} />
-      <Route path="/movie/:id" element={<MovieDetail />} />
-      <Route path="/edit/:id" element={<EditMovie />} />
-      <Route path="/create" element={<CreateMovie />} />
-    </Routes>
+    <div className="container mt-4">
+      <Routes>
+        <Route path="/" element={<MoviesPage />} />
+        <Route path="/movie/:id" element={<MovieDetail />} />
+        <Route path="/create" element={<CreateMovie />} />
+        <Route path="/edit/:id" element={<EditMovie />} />
+      </Routes>
+    </div>
   );
 }
 

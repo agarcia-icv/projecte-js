@@ -1,32 +1,35 @@
 import { useEffect, useState } from "react";
-import { getMovies } from "../services/movieService";
+import { Link } from "react-router-dom";
 import MovieCard from "../components/MovieCard";
 import type { Movie } from "../types/Movie";
-import MovieForm from "../components/MovieForm";
-import { Link } from "react-router-dom";
-
 
 export default function MoviesPage() {
 
-  const [movies, setMovies] = useState<Movie[]>([]);
+  const [movies, setMovies] = useState<(Movie & { _id: string })[]>([]);
 
   useEffect(() => {
-    getMovies().then(setMovies);
+    fetch("http://localhost:3000/movies")
+      .then(res => res.json())
+      .then(data => setMovies(data));
   }, []);
 
   return (
-<div>
-  <h1>Pelicules</h1>
+    <div>
 
-  
-<Link to="/create">
-  <button>Afegir pel·lícula</button>
-</Link>
+      <h1 className="mb-4">Llista de pel·lícules</h1>
 
-  {movies.map((movie, index) => (
-    <MovieCard key={index} movie={movie} />
-  ))}
-</div>
-    
+      <Link to="/create" className="btn btn-success mb-4">
+        + Afegir pel·lícula
+      </Link>
+
+      <div className="row">
+        {movies.map(movie => (
+          <div className="col-md-4 mb-3" key={movie._id}>
+            <MovieCard movie={movie} />
+          </div>
+        ))}
+      </div>
+
+    </div>
   );
 }

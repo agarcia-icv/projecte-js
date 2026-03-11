@@ -3,94 +3,127 @@ import { useNavigate } from "react-router-dom";
 
 export default function MovieForm() {
 
-  const [title, setTitle] = useState("");
-  const [rating, setRating] = useState(0);
-  const [watched, setWatched] = useState(false);
-  const [releaseDate, setReleaseDate] = useState("");
-  const [genres, setGenres] = useState("");
-  const [error, setError] = useState("");
-  const navigate = useNavigate();
+const [title, setTitle] = useState("");
+const [rating, setRating] = useState(0);
+const [watched, setWatched] = useState(false);
+const [releaseDate, setReleaseDate] = useState("");
+const [genres, setGenres] = useState("");
+const [error, setError] = useState("");
+
+const navigate = useNavigate();
+
 const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
+e.preventDefault();
 
-  if (!title) {
-    setError("Has de posar titol");
-    return;
-  }
+if (!title) {
+setError("Has de posar titol");
+return;
+}
 
-  if (rating < 0 || rating > 10) {
-    setError("La puntuacio ha de ser del 0 al 10");
-    return;
-  }
+if (rating < 0 || rating > 10) {
+setError("La puntuacio ha de ser del 0 al 10");
+return;
+}
 
-  if (!genres) {
-    setError("Minim has de posar un genere");
-    return;
-  }
+if (!genres) {
+setError("Minim has de posar un genere");
+return;
+}
 
-  setError("");
+setError("");
 
-  const movie = {
-    title,
-    rating,
-    watched,
-    releaseDate,
-    genres: genres.split(",").map(g => g.trim())
-  };
-
-  await fetch("http://localhost:3000/movies", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(movie)
-  });
-
-  navigate("/");
+const movie = {
+title,
+rating,
+watched,
+releaseDate,
+genres: genres.split(",").map(g => g.trim())
 };
 
+await fetch("http://localhost:3000/movies", {
+method: "POST",
+headers: {
+"Content-Type": "application/json"
+},
+body: JSON.stringify(movie)
+});
 
+navigate("/");
+};
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <h2>Afegir pelicula</h2>
-{error && <p style={{color: "red"}}>{error}</p>}
-      <input
-        placeholder="Titol"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-      />
+return (
 
-      <input
-        type="number"
-        placeholder="Puntuacio"
-        value={rating}
-        onChange={(e) => setRating(Number(e.target.value))}
-      />
+<div className="d-flex justify-content-center">
 
-      <input
-        type="date"
-        value={releaseDate}
-        onChange={(e) => setReleaseDate(e.target.value)}
-      />
+<form
+className="card p-4 shadow"
+style={{width: "400px"}}
+onSubmit={handleSubmit}
+>
 
-      <input
-        placeholder="Genere (Separat per comes)"
-        value={genres}
-        onChange={(e) => setGenres(e.target.value)}
-      />
+<h2 className="mb-3">Afegir pel·lícula</h2>
 
-      <label>
-        Vista
-        <input
-          type="checkbox"
-          checked={watched}
-          onChange={(e) => setWatched(e.target.checked)}
-        />
-      </label>
+{error && <div className="alert alert-danger">{error}</div>}
 
-      <button type="submit">Crear pelicula</button>
-    </form>
-  );
-  
+<input
+className="form-control mb-2"
+placeholder="Títol"
+value={title}
+onChange={(e) => setTitle(e.target.value)}
+/>
+
+<input
+className="form-control mb-2"
+type="number"
+placeholder="Puntuació"
+value={rating}
+onChange={(e) => setRating(Number(e.target.value))}
+/>
+
+<input
+className="form-control mb-2"
+type="date"
+value={releaseDate}
+onChange={(e) => setReleaseDate(e.target.value)}
+/>
+
+<input
+className="form-control mb-2"
+placeholder="Gèneres (separat per comes)"
+value={genres}
+onChange={(e) => setGenres(e.target.value)}
+/>
+
+<div className="form-check mb-3">
+
+<input
+className="form-check-input"
+type="checkbox"
+checked={watched}
+onChange={(e) => setWatched(e.target.checked)}
+/>
+
+<label className="form-check-label">
+Vista
+</label>
+
+</div>
+
+<button className="btn btn-success mb-2">
+Crear pel·lícula
+</button>
+
+<button
+type="button"
+className="btn btn-secondary"
+onClick={() => navigate("/")}
+>
+Tornar
+</button>
+
+</form>
+
+</div>
+
+);
 }
