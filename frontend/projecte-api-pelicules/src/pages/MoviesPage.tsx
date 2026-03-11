@@ -3,6 +3,8 @@ import { getMovies } from "../services/movieService";
 import MovieCard from "../components/MovieCard";
 import type { Movie } from "../types/Movie";
 import MovieForm from "../components/MovieForm";
+import { Link } from "react-router-dom";
+
 
 export default function MoviesPage() {
 
@@ -16,7 +18,10 @@ export default function MoviesPage() {
 <div>
   <h1>Pelicules</h1>
 
-  <MovieForm />
+  
+<Link to="/create">
+  <button>Afegir pel·lícula</button>
+</Link>
 
   {movies.map((movie, index) => (
     <MovieCard key={index} movie={movie} />
