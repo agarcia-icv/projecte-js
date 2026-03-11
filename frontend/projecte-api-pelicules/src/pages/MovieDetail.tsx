@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import type { Movie } from "../types/Movie";
+import { useNavigate } from "react-router-dom";
 
 export default function MovieDetail() {
 
@@ -12,7 +13,15 @@ export default function MovieDetail() {
       .then(res => res.json())
       .then(data => setMovie(data));
   }, [id]);
+  const navigate = useNavigate();
 
+const handleDelete = async () => {
+  await fetch(`http://localhost:3000/movies/${id}`, {
+    method: "DELETE"
+  });
+
+  navigate("/");
+};
   if (!movie) {
     return <p>Carregant pelicules...</p>;
   }
@@ -37,7 +46,9 @@ export default function MovieDetail() {
 
       <Link to={`/edit/${movie._id}`}>
         <button>Editar Pelicula</button>
+        
       </Link>
+      <button onClick={handleDelete}>Esborrar Pelicula</button>
 
     </div>
   );
