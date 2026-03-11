@@ -31,11 +31,11 @@ const handleDelete = async () => {
 
     <h2 className="mb-3">{movie.title}</h2>
 
-    <p><strong>Puntuació:</strong> {movie.rating}</p>
+    <p><strong>Puntuacio:</strong> {movie.rating}</p>
     <p><strong>Data:</strong> { new Date(movie.releaseDate).toLocaleDateString()}</p>
     
 
-    <p><strong>Gèneres:</strong> {movie.genres.join(", ")}</p>
+    <p><strong>Generes:</strong> {movie.genres.join(", ")}</p>
     <p><strong>Vista:</strong> {movie.watched ? "Sí" : "No"}</p>
 
     <div className="mt-3">

@@ -14,12 +14,12 @@ export default function MovieCard({ movie }: Props) {
         <h5 className="card-title">{movie.title}</h5>
 
         <p className="card-text">
-          Puntuació: {movie.rating}
+          Puntuacio: {movie.rating}
         </p>
 
-      <p className="card-text">
- {new Date(movie.releaseDate).toLocaleDateString()}
-</p>
+        <p className="card-text">
+          {new Date(movie.releaseDate).toLocaleDateString()}
+        </p>
 
         <p className="card-text">
           {movie.genres.join(", ")}
@@ -30,7 +30,7 @@ export default function MovieCard({ movie }: Props) {
         </p>
 
         <Link to={`/movie/${movie._id}`} className="btn btn-primary btn-sm me-2">
-          Veure
+          Veure Detalls
         </Link>
 
         <Link to={`/edit/${movie._id}`} className="btn btn-warning btn-sm">
@@ -38,7 +38,6 @@ export default function MovieCard({ movie }: Props) {
         </Link>
 
       </div>
-
     </div>
   );
 }

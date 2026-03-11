@@ -51,11 +51,11 @@ export default function EditMovie() {
 
       <form className="card p-4 shadow" style={{width: "400px"}} onSubmit={handleSubmit}>
 
-        <h2 className="mb-3">Editar pel·lícula</h2>
+        <h2 className="mb-3">Editar pelicula</h2>
 
         <input
           className="form-control mb-2"
-          placeholder="Títol"
+          placeholder="Titol"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
@@ -63,7 +63,7 @@ export default function EditMovie() {
         <input
           className="form-control mb-2"
           type="number"
-          placeholder="Puntuació"
+          placeholder="Puntuacio"
           value={rating}
           onChange={(e) => setRating(Number(e.target.value))}
         />
@@ -77,7 +77,7 @@ export default function EditMovie() {
 
         <input
           className="form-control mb-2"
-          placeholder="Gèneres (separat per comes)"
+          placeholder="Generes (separat per comes)"
           value={genres}
           onChange={(e) => setGenres(e.target.value)}
         />
@@ -95,7 +95,7 @@ export default function EditMovie() {
         </div>
 
         <button className="btn btn-warning mb-2">
-          Actualitzar pel·lícula
+          Guardar
         </button>
 
         <button
