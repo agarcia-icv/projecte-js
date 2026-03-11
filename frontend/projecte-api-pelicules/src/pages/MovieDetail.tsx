@@ -26,30 +26,34 @@ const handleDelete = async () => {
     return <p>Carregant pelicules...</p>;
   }
 
-  return (
-    <div>
-      <Link to="/">
-        <button>Tornar</button>
+ return (
+  <div className="card shadow p-4">
+
+    <h2 className="mb-3">{movie.title}</h2>
+
+    <p><strong>Puntuació:</strong> {movie.rating}</p>
+    <p><strong>Data:</strong> { new Date(movie.releaseDate).toLocaleDateString()}</p>
+    
+
+    <p><strong>Gèneres:</strong> {movie.genres.join(", ")}</p>
+    <p><strong>Vista:</strong> {movie.watched ? "Sí" : "No"}</p>
+
+    <div className="mt-3">
+
+      <Link to={`/edit/${movie._id}`} className="btn btn-warning me-2">
+        Editar
       </Link>
 
-      <h1>{movie.title}</h1>
+      <button className="btn btn-danger me-2" onClick={handleDelete}>
+        Eliminar
+      </button>
 
-      <p>Valoracio: {movie.rating}</p>
-
-      <p>Data de sortida: {movie.releaseDate}</p>
-
-      <p>Generes: {movie.genres.join(", ")}</p>
-
-      <p>
-        {movie.watched ? "Vista" : "No vista"}
-      </p>
-
-      <Link to={`/edit/${movie._id}`}>
-        <button>Editar Pelicula</button>
-        
+      <Link to="/" className="btn btn-secondary">
+        Tornar
       </Link>
-      <button onClick={handleDelete}>Esborrar Pelicula</button>
 
     </div>
-  );
+
+  </div>
+);
 }

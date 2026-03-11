@@ -1,6 +1,5 @@
 import type { Movie } from "../types/Movie";
 import { Link } from "react-router-dom";
-import Button from "./Button";
 
 type Props = {
   movie: Movie & { _id: string };
@@ -8,22 +7,38 @@ type Props = {
 
 export default function MovieCard({ movie }: Props) {
   return (
-    <div className="movie-card">
-      <h3>{movie.title}</h3>
+    <div className="card shadow-sm h-100">
 
-      <p>PUNTUACIÓ: {movie.rating}</p>
+      <div className="card-body">
 
-      <p>DATA D'ESTRENA: {movie.releaseDate}</p>
+        <h5 className="card-title">{movie.title}</h5>
 
-      <p>GENERE: {movie.genres.join(", ")}</p>
+        <p className="card-text">
+          Puntuació: {movie.rating}
+        </p>
 
-      <p>
-        {movie.watched ? "VISTA" : "NO VISTA"}
-      </p>
+      <p className="card-text">
+ {new Date(movie.releaseDate).toLocaleDateString()}
+</p>
 
-      <Link to={`/movie/${movie._id}`}>
-        <Button text="Veure detalls" />
-      </Link>
+        <p className="card-text">
+          {movie.genres.join(", ")}
+        </p>
+
+        <p className="card-text">
+          {movie.watched ? "Vista" : "No vista"}
+        </p>
+
+        <Link to={`/movie/${movie._id}`} className="btn btn-primary btn-sm me-2">
+          Veure
+        </Link>
+
+        <Link to={`/edit/${movie._id}`} className="btn btn-warning btn-sm">
+          Editar
+        </Link>
+
+      </div>
+
     </div>
   );
 }
