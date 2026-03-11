@@ -1,5 +1,6 @@
 import type { Movie } from "../types/Movie";
 import { Link } from "react-router-dom";
+import Button from "./Button";
 
 type Props = {
   movie: Movie & { _id: string };
@@ -21,7 +22,7 @@ export default function MovieCard({ movie }: Props) {
       </p>
 
       <Link to={`/movie/${movie._id}`}>
-        <button>Veure detalls</button>
+        <Button text="Veure detalls" />
       </Link>
     </div>
   );
