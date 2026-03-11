@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import type { Movie } from "../types/Movie";
 
-export default function MovieDetail({ id }: { id: string }) {
+export default function MovieDetail() {
 
+  const { id } = useParams();
   const [movie, setMovie] = useState<Movie | null>(null);
 
   useEffect(() => {
@@ -12,22 +14,24 @@ export default function MovieDetail({ id }: { id: string }) {
   }, [id]);
 
   if (!movie) {
-    return <p>Loading...</p>;
+    return <p>Carregant pelicules...</p>;
   }
 
   return (
     <div>
-      <h2>{movie.title}</h2>
 
-      <p>⭐ Rating: {movie.rating}</p>
+      <h1>{movie.title}</h1>
 
-      <p>📅 Release Date: {movie.releaseDate}</p>
+      <p>Valoracio: {movie.rating}</p>
 
-      <p>🎭 Genres: {movie.genres.join(", ")}</p>
+      <p>Data de sortida: {movie.releaseDate}</p>
+
+      <p>Generes: {movie.genres.join(", ")}</p>
 
       <p>
-        {movie.watched ? "✅ Watched" : "❌ Not watched"}
+        {movie.watched ? "Vista" : "No vista"}
       </p>
+
     </div>
   );
 }

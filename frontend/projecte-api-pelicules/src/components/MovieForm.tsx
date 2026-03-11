@@ -13,7 +13,7 @@ const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault();
 
   if (!title) {
-    setError("has de posar titol");
+    setError("Has de posar titol");
     return;
   }
 
@@ -23,7 +23,7 @@ const handleSubmit = async (e: React.FormEvent) => {
   }
 
   if (!genres) {
-    setError("minim has de posar un genere");
+    setError("Minim has de posar un genere");
     return;
   }
 
@@ -45,7 +45,7 @@ const handleSubmit = async (e: React.FormEvent) => {
     body: JSON.stringify(movie)
   });
 
-  alert("pelicula creada");
+  alert("Pelicula creada");
 };
 
   return (
@@ -72,7 +72,7 @@ const handleSubmit = async (e: React.FormEvent) => {
       />
 
       <input
-        placeholder="Genre (Separat per comes)"
+        placeholder="Genere (Separat per comes)"
         value={genres}
         onChange={(e) => setGenres(e.target.value)}
       />
