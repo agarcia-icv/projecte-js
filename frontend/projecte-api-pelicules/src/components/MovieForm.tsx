@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function MovieForm() {
 
@@ -8,7 +9,7 @@ export default function MovieForm() {
   const [releaseDate, setReleaseDate] = useState("");
   const [genres, setGenres] = useState("");
   const [error, setError] = useState("");
-
+  const navigate = useNavigate();
 const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault();
 
@@ -45,8 +46,10 @@ const handleSubmit = async (e: React.FormEvent) => {
     body: JSON.stringify(movie)
   });
 
-  alert("Pelicula creada");
+  navigate("/");
 };
+
+
 
   return (
     <form onSubmit={handleSubmit}>
