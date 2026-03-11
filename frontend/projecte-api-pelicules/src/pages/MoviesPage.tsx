@@ -16,10 +16,10 @@ export default function MoviesPage() {
   return (
     <div>
 
-      <h1 className="mb-4">Llista de pel·lícules</h1>
+      <h1 className="mb-4">Llista de pelicules</h1>
 
       <Link to="/create" className="btn btn-success mb-4">
-        + Afegir pel·lícula
+        Afegir pelicula
       </Link>
 
       <div className="row">
