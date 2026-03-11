@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import type { Movie } from "../types/Movie";
 
 export default function MovieDetail() {
@@ -19,6 +19,9 @@ export default function MovieDetail() {
 
   return (
     <div>
+      <Link to="/">
+        <button>Tornar</button>
+      </Link>
 
       <h1>{movie.title}</h1>
 
@@ -31,6 +34,10 @@ export default function MovieDetail() {
       <p>
         {movie.watched ? "Vista" : "No vista"}
       </p>
+
+      <Link to={`/edit/${movie._id}`}>
+        <button>Editar Pelicula</button>
+      </Link>
 
     </div>
   );
