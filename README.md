@@ -43,4 +43,4 @@ npm run dev
 
 Accedir a:
 http://localhost:5173 pel frontend
-htpp://localhost:3000 per comprovar si funciona la api
+http://localhost:3000 per comprovar si funciona la api
