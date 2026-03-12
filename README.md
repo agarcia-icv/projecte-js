@@ -33,11 +33,14 @@ Per executar el projecte cal tenir instal·lat:
 
 ## Execució local
 
-Instal·lar dependències:
+Instal·lar dependències dins de backend/ i frontend/projecte-api-pelicules/:
 npm install
+npm install bootstrap
+npm install react-router-dom (a vegades no fa falta)
 
 Executar:
 npm run dev
 
 Accedir a:
-http://localhost:5173
+http://localhost:5173 pel frontend
+htpp://localhost:3000 per comprovar si funciona la api
